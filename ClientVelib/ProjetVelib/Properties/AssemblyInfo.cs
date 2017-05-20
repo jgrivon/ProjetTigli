@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
+//test git
 [assembly: AssemblyTitle("ProjetVelib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]

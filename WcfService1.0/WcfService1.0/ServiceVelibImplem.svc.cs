@@ -9,8 +9,13 @@ namespace WcfService1._0
 {
   // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code, le fichier svc et le fichier de configuration.
   // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
-  public class Service1 : IService1
+  public class ServiceVelibImplem: IServiceVelib
   {
+
+    public string HelloWorld()
+    {
+      return "Hello darkness my old friend";
+    }
     public long CalculTrajectory(Coordinates departure, Coordinates destination)
     {
       long result =

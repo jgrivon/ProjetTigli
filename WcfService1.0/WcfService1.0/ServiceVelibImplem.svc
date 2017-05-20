@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WcfService1._0.Service1" CodeBehind="ServiceVelibImplem.svc.cs" %>

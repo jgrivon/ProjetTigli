@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace ProjetVelib
 {
-    class WebRequestVelibApi
+    public class WebRequestVelibApi
     {
         private static string contractName = "Paris";
         private static string apiKey = "6e0b0fc2be5ababcfad0e80ea1dea2ad81e6f4ac";

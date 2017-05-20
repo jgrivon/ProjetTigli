@@ -1,0 +1,13 @@
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\obj\Debug\ClientActionLibrairy.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ClientActionLibrairy.dll.config
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ClientActionLibrairy.dll
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ClientActionLibrairy.pdb
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\GeoCoordinate.NetStandard1.dll
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ProjetVelib.exe
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ProjetVelib.pdb
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\ProjetVelib.exe.config
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\obj\Debug\ClientActionLibrairy.dll
+C:\Users\user\Desktop\Tigli\ClientVelib\ClientActionLibrairy\obj\Debug\ClientActionLibrairy.pdb

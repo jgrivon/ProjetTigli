@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjetVelib
 {
-    class WebRequestGoogleApi
+    public class WebRequestGoogleApi
     {
         private static string apiKey = "AIzaSyDKug9PW5gx8hPH85GgZCul4ZAoiAgsRuE";
         private string uri;

@@ -24,6 +24,6 @@ namespace VelibLibrairy
       string lngstr = lng.ToString().Replace(',', '.');
       return latstr + "," + lngstr;
 
-    }
+        }
   }
 }

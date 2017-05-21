@@ -16,7 +16,7 @@ namespace WcfService1._0
     {
       return "Hello darkness my old friend";
     }
-    public long CalculTrajectory(Coordinates departure, Coordinates destination)
+    public long CalculTrajectory(Placehoder departure, Placehoder destination)
     {
       long result =
       destination.Lattitude - departure.Lattitude

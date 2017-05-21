@@ -18,7 +18,7 @@ namespace VelibLibrairy
       destination.Lattitude - departure.Lattitude
         + destination.Longitude - departure.Longitude;
 
-      return 0;
+      return result;
     }
   }
 }

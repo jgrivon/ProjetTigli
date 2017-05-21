@@ -10,18 +10,24 @@ namespace VelibLibrairy
   [DataContract]
   public class Coordinates
   {
+    private long Longitude_;
+    private long Lattitude_;
+
+
     [DataMember]
     public long Longitude
     {
-      get { return Longitude; }
-      set { Longitude = value; }
+      set { Longitude_ = value; }
+      get { return Longitude_; }
+     
     }
 
     [DataMember]
     public long Lattitude
     {
-      get { return Lattitude; }
-      set { Lattitude = value; }
+      set { Lattitude_ = value; }
+      get { return Lattitude_; }
+      
     }
   }
 }

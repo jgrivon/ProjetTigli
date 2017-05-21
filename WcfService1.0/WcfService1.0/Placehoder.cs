@@ -8,7 +8,7 @@ using System.Web;
 namespace WcfService1._0
 {
   [DataContract]
-  public class Coordinates
+  public class Placehoder
   {
     [DataMember]
     public long Longitude

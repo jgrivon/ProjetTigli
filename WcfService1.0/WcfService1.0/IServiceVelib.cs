@@ -12,7 +12,7 @@ namespace WcfService1._0
   public interface IServiceVelib
   {
     [OperationContract]
-    long CalculTrajectory(Coordinates departure, Coordinates destination);
+    long CalculTrajectory(Placehoder departure, Placehoder destination);
 
     [OperationContract]
     string HelloWorld();

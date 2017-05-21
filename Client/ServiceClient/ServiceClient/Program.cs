@@ -18,16 +18,16 @@ namespace ServiceClient
       ServiceVelib.Coordinates dep = new ServiceVelib.Coordinates();
       Console.WriteLine("Entrer start point.");
       Console.Write("Longitude : ");
-      dep.Longitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      dep.Longitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //2.368867; // 
       Console.Write("Lattitude : ");
-      dep.Lattitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      dep.Lattitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //48.854709; // 
       ServiceVelib.Coordinates arr = new ServiceVelib.Coordinates();
 
       Console.WriteLine("Enter Destination point.");
       Console.Write("Longitude : ");
-      arr.Longitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      arr.Longitude =  Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //2.306852; //
       Console.Write("Lattitude : ");
-      arr.Lattitude = 2.306852;// Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      arr.Lattitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //48.870203;//
 
       string[] instructions = client.GetInstructionsTrajectory(dep, arr);
 

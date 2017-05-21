@@ -12,6 +12,7 @@ namespace VelibLibrairy
   {
     public static string[] GetTrajectoryArray(Position Start, Position Arrival)
     {
+     
 
       Position Depart = Start;//new Position(48.854709, 2.368867);
       Position Arrive = Arrival;//new Position(48.870203, 2.306852);
@@ -35,15 +36,9 @@ namespace VelibLibrairy
         finalresult[instructionsToStation.Length] = "<br> BIKE STATION : Take a Bike to Continue the trip <br>";
         Array.Copy(instructionToDestination, 0, finalresult, instructionsToStation.Length + 1, instructionToDestination.Length);
 
-        
-        Console.WriteLine("CONTENT OF RESULT");
-        for (int i = 0; i < finalresult.Length; i++)
-        {
-          Console.WriteLine(finalresult[i]);
-        }
+     
       }
-      else { Console.Error.WriteLine("Position is null !"); }
-      Console.ReadKey();
+  
       return finalresult;
     }
 
@@ -55,8 +50,7 @@ namespace VelibLibrairy
       var sCoord = new GeoCoordinate(48.853720, 2.338358);
       int i = 0;
       GoogleModel Min = null;
-      Position Arrival = null;
-      Console.WriteLine(datas.ToString());
+      Position Arrival = null; 
 
       foreach (VelibModel data in datas)
       {
@@ -85,8 +79,7 @@ namespace VelibLibrairy
             }
             i++;
 
-            // Console.WriteLine("départ: "+result.adresse_start+", arrivé: "+result.adresse_end+", distance : "+result.distance+"m, durée:"+result.distance/60+" mn");
-
+           
           }
 
         }

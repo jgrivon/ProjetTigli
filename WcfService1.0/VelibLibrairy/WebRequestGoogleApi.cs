@@ -71,8 +71,6 @@ namespace VelibLibrairy
 
       for (int i = 0; i < steps.ToArray().Length; i++)
       {
-        // Console.WriteLine(i);
-        //Console.WriteLine(steps[i]["html_instructions"].ToObject<String>());
         result[i] = steps[i]["html_instructions"].ToObject<String>();
       }
       return result;

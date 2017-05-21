@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceClient.ServiceReference {
+namespace ServiceClient.ServiceVelib {
     using System.Runtime.Serialization;
     using System;
     
@@ -75,29 +75,35 @@ namespace ServiceClient.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IVelibService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceVelib.IVelibService")]
     public interface IVelibService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/CalculTrajectory", ReplyAction="http://tempuri.org/IVelibService/CalculTrajectoryResponse")]
-        long CalculTrajectory(ServiceClient.ServiceReference.Coordinates departure, ServiceClient.ServiceReference.Coordinates destination);
+        long CalculTrajectory(ServiceClient.ServiceVelib.Coordinates departure, ServiceClient.ServiceVelib.Coordinates destination);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/CalculTrajectory", ReplyAction="http://tempuri.org/IVelibService/CalculTrajectoryResponse")]
-        System.Threading.Tasks.Task<long> CalculTrajectoryAsync(ServiceClient.ServiceReference.Coordinates departure, ServiceClient.ServiceReference.Coordinates destination);
+        System.Threading.Tasks.Task<long> CalculTrajectoryAsync(ServiceClient.ServiceVelib.Coordinates departure, ServiceClient.ServiceVelib.Coordinates destination);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/HelloWorld", ReplyAction="http://tempuri.org/IVelibService/HelloWorldResponse")]
         string HelloWorld();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/HelloWorld", ReplyAction="http://tempuri.org/IVelibService/HelloWorldResponse")]
         System.Threading.Tasks.Task<string> HelloWorldAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetInstructionsTrajectory", ReplyAction="http://tempuri.org/IVelibService/GetInstructionsTrajectoryResponse")]
+        string[] GetInstructionsTrajectory(ServiceClient.ServiceVelib.Coordinates depart, ServiceClient.ServiceVelib.Coordinates destination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVelibService/GetInstructionsTrajectory", ReplyAction="http://tempuri.org/IVelibService/GetInstructionsTrajectoryResponse")]
+        System.Threading.Tasks.Task<string[]> GetInstructionsTrajectoryAsync(ServiceClient.ServiceVelib.Coordinates depart, ServiceClient.ServiceVelib.Coordinates destination);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IVelibServiceChannel : ServiceClient.ServiceReference.IVelibService, System.ServiceModel.IClientChannel {
+    public interface IVelibServiceChannel : ServiceClient.ServiceVelib.IVelibService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class VelibServiceClient : System.ServiceModel.ClientBase<ServiceClient.ServiceReference.IVelibService>, ServiceClient.ServiceReference.IVelibService {
+    public partial class VelibServiceClient : System.ServiceModel.ClientBase<ServiceClient.ServiceVelib.IVelibService>, ServiceClient.ServiceVelib.IVelibService {
         
         public VelibServiceClient() {
         }
@@ -118,11 +124,11 @@ namespace ServiceClient.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public long CalculTrajectory(ServiceClient.ServiceReference.Coordinates departure, ServiceClient.ServiceReference.Coordinates destination) {
+        public long CalculTrajectory(ServiceClient.ServiceVelib.Coordinates departure, ServiceClient.ServiceVelib.Coordinates destination) {
             return base.Channel.CalculTrajectory(departure, destination);
         }
         
-        public System.Threading.Tasks.Task<long> CalculTrajectoryAsync(ServiceClient.ServiceReference.Coordinates departure, ServiceClient.ServiceReference.Coordinates destination) {
+        public System.Threading.Tasks.Task<long> CalculTrajectoryAsync(ServiceClient.ServiceVelib.Coordinates departure, ServiceClient.ServiceVelib.Coordinates destination) {
             return base.Channel.CalculTrajectoryAsync(departure, destination);
         }
         
@@ -132,6 +138,14 @@ namespace ServiceClient.ServiceReference {
         
         public System.Threading.Tasks.Task<string> HelloWorldAsync() {
             return base.Channel.HelloWorldAsync();
+        }
+        
+        public string[] GetInstructionsTrajectory(ServiceClient.ServiceVelib.Coordinates depart, ServiceClient.ServiceVelib.Coordinates destination) {
+            return base.Channel.GetInstructionsTrajectory(depart, destination);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetInstructionsTrajectoryAsync(ServiceClient.ServiceVelib.Coordinates depart, ServiceClient.ServiceVelib.Coordinates destination) {
+            return base.Channel.GetInstructionsTrajectoryAsync(depart, destination);
         }
     }
 }

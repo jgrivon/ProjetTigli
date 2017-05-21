@@ -15,6 +15,8 @@ namespace VelibLibrairy
 
     [OperationContract]
     string HelloWorld();
-
+    
+    [OperationContract]
+    List<String> GetInstructionsTrajectory(Coordinates depart, Coordinates destination);
   }
 }

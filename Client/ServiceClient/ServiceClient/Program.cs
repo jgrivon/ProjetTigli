@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+ 
 
 namespace ServiceClient
 {
@@ -10,31 +11,29 @@ namespace ServiceClient
   {
     static void Main(string[] args)
     {
-      ServiceReference.VelibServiceClient client = new ServiceReference.VelibServiceClient();
+   
+      ServiceVelib.VelibServiceClient client = new ServiceVelib.VelibServiceClient();
 
       Console.WriteLine(client.HelloWorld());
 
-      ServiceReference.Coordinates dep = new ServiceReference.Coordinates();
+      ServiceVelib.Coordinates dep = new ServiceVelib.Coordinates();
       Console.WriteLine("Entrer le point de départ , Longitude puis Lattitude :");
 
       dep.Longitude = Convert.ToInt32(Console.ReadLine());
       dep.Lattitude = Convert.ToInt32(Console.ReadLine());
-      ServiceReference.Coordinates arr = new ServiceReference.Coordinates();
+      ServiceVelib.Coordinates arr = new ServiceVelib.Coordinates();
 
       Console.WriteLine("Entrer le point d'arrivé , Longitude puis Lattitude :");
       arr.Longitude = Convert.ToInt32(Console.ReadLine());
       arr.Lattitude = Convert.ToInt32(Console.ReadLine());
 
-      
-      Console.WriteLine(client.CalculTrajectory(dep, arr));
-    
-      // Task<long> res = client.CalculTrajectoryAsync(dep, arr);
+      string[] instructions = client.GetInstructionsTrajectory(dep, arr);
 
-     //  while (!res.IsCompleted)
-     // {
-        
-      //}
-      //Console.WriteLine(res.Result);
+      foreach(String instruction in instructions)
+      {
+        Console.WriteLine(instruction);
+      }
+      Console.WriteLine(client.CalculTrajectory(dep, arr));
 
       Console.ReadKey();
 

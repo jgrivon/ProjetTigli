@@ -20,6 +20,13 @@ namespace VelibLibrairy
 
       return result;
     }
+
+    public List<string> GetInstructionsTrajectory(Coordinates depart, Coordinates destination)
+    {
+      //using programme 
+      throw new NotImplementedException();
+    }
+
   }
 }
 

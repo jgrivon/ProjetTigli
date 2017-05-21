@@ -27,8 +27,9 @@ Le trajet est comme suit :
 Le prix de ce Webservice est calculé sur la base des prix des API utilisées:
 Paris Vélib étant gratuit on comptabilise les prix de Google Map Directions ainsi que Google Map Distance Matrix. Les deux servicent coutent 0.5 USD pour 1000 requêtes. 
 
-Le Webservice consomme au maximum 10 requette avant de trouver la station la plus proche sur un rayon de 2 km. 
+Le Webservice consomme au maximum 10 requettes avant de trouver la station la plus proche sur un rayon de 2 km. 
 Ensuite 2 requetes pour obtenir les chemins respectif des trajet à pied et en vélo.  
+Le coup total pour une requete est de 0.006 euros pour une requete. 
 
 
 

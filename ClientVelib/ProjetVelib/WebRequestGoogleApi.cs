@@ -35,7 +35,6 @@ namespace ProjetVelib
     public void GetTrajectoryFoot(Position start, Position end)
     {
       fillCoordDirectionsFeet(start, end);
-
       WebRequest request = WebRequest.Create(uri);
       request.Credentials = CredentialCache.DefaultCredentials;
       WebResponse response = request.GetResponse();
@@ -43,21 +42,24 @@ namespace ProjetVelib
       StreamReader reader = new StreamReader(dataStream);
 
       string responseFromServer = reader.ReadToEnd();
+   
       reader.Close();
       response.Close();
 
-      
-
+    
       JObject json = JObject.Parse(responseFromServer);
 
       //List<String> instructions = new List<string>();
       JArray routes = json.GetValue("routes").ToObject<JArray>();
+           
+      
       JArray legs = routes[0]["legs"].ToObject<JArray>();
       JArray steps = legs[0]["steps"].ToObject<JArray>();
       for(int i=0; i<steps.ToArray().Length || i<10; i++)
       {
         Console.WriteLine(steps[i]["html_instructions"].ToObject<String>());
       }
+      
 
 
 

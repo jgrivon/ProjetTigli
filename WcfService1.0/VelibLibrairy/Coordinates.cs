@@ -10,12 +10,12 @@ namespace VelibLibrairy
   [DataContract]
   public class Coordinates
   {
-    private long Longitude_;
-    private long Lattitude_;
+    private double Longitude_;
+    private double Lattitude_;
 
 
     [DataMember]
-    public long Longitude
+    public double Longitude
     {
       set { Longitude_ = value; }
       get { return Longitude_; }
@@ -23,7 +23,7 @@ namespace VelibLibrairy
     }
 
     [DataMember]
-    public long Lattitude
+    public double Lattitude
     {
       set { Lattitude_ = value; }
       get { return Lattitude_; }

@@ -14,17 +14,23 @@ namespace VelibLibrairy
     }
     public long CalculTrajectory(Coordinates departure, Coordinates destination)
     {
-      long result =
-      destination.Lattitude - departure.Lattitude
+      long result = 0;
+      /*destination.Lattitude - departure.Lattitude
         + destination.Longitude - departure.Longitude;
-
+        */
       return result;
     }
 
     public List<string> GetInstructionsTrajectory(Coordinates depart, Coordinates destination)
     {
       //using programme 
-      throw new NotImplementedException();
+      string[] temp = Program.GetTrajectoryArray(new Position(depart.Lattitude, depart.Longitude), 
+                                                  new Position(destination.Lattitude, destination.Longitude));
+      if(temp == null)
+      {
+        throw new Exception();
+      }
+      return temp.ToList<string>();
     }
 
   }

@@ -12,11 +12,31 @@ namespace ProjetVelib
   {
     static void Main(string[] args)
     {
-      Position Depart = new Position(48.853720, 2.338358);
-      Position station = findClosestStation(48.853720, 2.338358);
+
+      Position Depart = new Position(48.854709, 2.368867);
+      Position Arrive = new Position(48.870203, 2.306852);
+      Position station = findClosestStation(48.854709, 2.368867);
+
+      string[] instructionsToStation;
+      string[] instructionToDestination;
+
+   
       if(station != null)
       {
-        roadToStation(Depart, station);
+        instructionsToStation = roadToStation(Depart, station);
+        instructionToDestination = roadToDestination(station, Arrive);
+
+        string[] finalresult = new string[instructionsToStation.Length + 1 + instructionToDestination.Length];
+
+        Array.Copy(instructionsToStation, 0, finalresult, 0, instructionsToStation.Length);
+        finalresult[instructionsToStation.Length] = "<br> BIKE STATION : Take a Bike to Continue the trip <br>";
+        Array.Copy(instructionToDestination, 0, finalresult, instructionsToStation.Length + 1, instructionToDestination.Length);
+
+        Console.WriteLine("CONTENT OF RESULT");
+        for(int i=0; i<finalresult.Length; i++)
+        {
+          Console.WriteLine(finalresult[i]);
+        }
       }
       else { Console.Error.WriteLine("Position is null !"); }
       Console.ReadKey();
@@ -69,13 +89,18 @@ namespace ProjetVelib
       return Arrival;
     }
 
-    public static void roadToStation(Position depart, Position arrive)
+    public static string[] roadToStation(Position depart, Position arrive)
     {
       WebRequestGoogleApi directions = new WebRequestGoogleApi();
-      directions.GetTrajectoryFoot(depart, arrive);
+      return directions.GetTrajectoryFoot(depart, arrive);
 
     }
 
+    public static string[] roadToDestination(Position depart, Position arrive)
+    {
+      WebRequestGoogleApi directions = new WebRequestGoogleApi();
+      return directions.GetTrajectoryBike(depart, arrive);
+    }
     
   }
 }

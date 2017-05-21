@@ -16,10 +16,74 @@ namespace VelibLibrairy
     private static string apiKey = "AIzaSyDKug9PW5gx8hPH85GgZCul4ZAoiAgsRuE";
     private string uri;
 
+    private void fillCoordDirectionsWithBike(Position start, Position end)
+    {
+      uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + start.ToString() + "&destination=" + end.ToString() + "" +
+  "&avoid=highways&mode=bicycling&key=" + apiKey;
+    }
+    private void fillCoordDirectionsFeet(Position start, Position end)
+    {
+      uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + start.ToString() + "&destination=" + end.ToString() + "" +
+  "&avoid=highways&mode=walking&key=" + apiKey;
+    }
+
     private void fillCoord(string start, string end)
     {
       uri = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=" + start + "&destinations=" + end + "&key=" + apiKey;
     }
+
+    public string[] GetTrajectoryFoot(Position start, Position end)
+    {
+      fillCoordDirectionsFeet(start, end);
+      return GetTrajectory(start, end);
+    }
+
+    public string[] GetTrajectoryBike(Position start, Position end)
+    {
+      fillCoordDirectionsWithBike(start, end);
+      return GetTrajectory(start, end);
+    }
+
+    private string[] GetTrajectory(Position start, Position end)
+    {
+      WebRequest request = WebRequest.Create(uri);
+      request.Credentials = CredentialCache.DefaultCredentials;
+      WebResponse response = request.GetResponse();
+      Stream dataStream = response.GetResponseStream();
+      StreamReader reader = new StreamReader(dataStream);
+
+      string responseFromServer = reader.ReadToEnd();
+
+      reader.Close();
+      response.Close();
+
+
+      JObject json = JObject.Parse(responseFromServer);
+
+      //List<String> instructions = new List<string>();
+      JArray routes = json.GetValue("routes").ToObject<JArray>();
+
+
+      JArray legs = routes[0]["legs"].ToObject<JArray>();
+      JArray steps = legs[0]["steps"].ToObject<JArray>();
+
+      string[] result = new string[steps.ToArray().Length];
+
+      for (int i = 0; i < steps.ToArray().Length; i++)
+      {
+        // Console.WriteLine(i);
+        //Console.WriteLine(steps[i]["html_instructions"].ToObject<String>());
+        result[i] = steps[i]["html_instructions"].ToObject<String>();
+      }
+      return result;
+    }
+
+
+
+
+
+
+
     public GoogleModel Get(GeoCoordinate start, GeoCoordinate end)
     {
       fillCoord(start.ToString(), end.ToString());

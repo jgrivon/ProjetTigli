@@ -10,41 +10,102 @@ namespace VelibLibrairy
 {
   class Program
   {
-    static void Main(string[] args)
+    public static string[] GetTrajectoryArray(Position Start, Position Arrival)
+    {
+
+      Position Depart = Start;//new Position(48.854709, 2.368867);
+      Position Arrive = Arrival;//new Position(48.870203, 2.306852);
+
+      Position station = findClosestStation(Depart.lng,Depart.lat);
+
+      string[] instructionsToStation;
+      string[] instructionToDestination;
+
+      string[] finalresult = null;
+
+
+      if (station != null)
+      {
+        instructionsToStation = roadToStation(Depart, station);
+        instructionToDestination = roadToDestination(station, Arrive);
+
+        finalresult = new string[instructionsToStation.Length + 1 + instructionToDestination.Length];
+
+        Array.Copy(instructionsToStation, 0, finalresult, 0, instructionsToStation.Length);
+        finalresult[instructionsToStation.Length] = "<br> BIKE STATION : Take a Bike to Continue the trip <br>";
+        Array.Copy(instructionToDestination, 0, finalresult, instructionsToStation.Length + 1, instructionToDestination.Length);
+
+        
+        Console.WriteLine("CONTENT OF RESULT");
+        for (int i = 0; i < finalresult.Length; i++)
+        {
+          Console.WriteLine(finalresult[i]);
+        }
+      }
+      else { Console.Error.WriteLine("Position is null !"); }
+      Console.ReadKey();
+      return finalresult;
+    }
+
+    public static Position findClosestStation(double departlong, double lattitude)
     {
       WebRequestVelibApi test = new WebRequestVelibApi();
       List<VelibModel> datas = test.Get();
       // for example, using random Paris coordinate
       var sCoord = new GeoCoordinate(48.853720, 2.338358);
       int i = 0;
-
+      GoogleModel Min = null;
+      Position Arrival = null;
       Console.WriteLine(datas.ToString());
 
       foreach (VelibModel data in datas)
       {
 
-        if (i < 10)
-        {
-          Console.WriteLine(data.name);
-
-        }
         if (data.status.Equals("OPEN") && data.available_bikes > 0)
         {
           var eCoord = new GeoCoordinate(data.position.lat, data.position.lng);
           double distance = sCoord.GetDistanceTo(eCoord);
+
           if (i < 10 && distance <= 2000)
           {
-            i++;
             WebRequestGoogleApi google = new WebRequestGoogleApi();
             GoogleModel result = google.Get(sCoord, eCoord);
 
-            Console.WriteLine("départ: " + result.adresse_start + ", arrivé: " + result.adresse_end + ", distance : " + result.distance + "m, durée:" + result.distance / 60 + " mn");
+            //Cherche la distance minimum 
+            if (i == 0)
+            {
+
+              Min = result;
+              Arrival = new Position(eCoord.Latitude, eCoord.Longitude);
+            }
+            if ((Min != null) && (result.distance < Min.distance))
+            {
+              Min = result;
+              Arrival = new Position(eCoord.Latitude, eCoord.Longitude);
+            }
+            i++;
+
+            // Console.WriteLine("départ: "+result.adresse_start+", arrivé: "+result.adresse_end+", distance : "+result.distance+"m, durée:"+result.distance/60+" mn");
 
           }
 
         }
       }
-      Console.ReadKey();
+      return Arrival;
     }
+
+    public static string[] roadToStation(Position depart, Position arrive)
+    {
+      WebRequestGoogleApi directions = new WebRequestGoogleApi();
+      return directions.GetTrajectoryFoot(depart, arrive);
+
+    }
+
+    public static string[] roadToDestination(Position depart, Position arrive)
+    {
+      WebRequestGoogleApi directions = new WebRequestGoogleApi();
+      return directions.GetTrajectoryBike(depart, arrive);
+    }
+
   }
 }

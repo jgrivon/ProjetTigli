@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +15,19 @@ namespace ServiceClient
    
       ServiceVelib.VelibServiceClient client = new ServiceVelib.VelibServiceClient();
 
-      Console.WriteLine(client.HelloWorld());
-
       ServiceVelib.Coordinates dep = new ServiceVelib.Coordinates();
-      Console.WriteLine("Entrer le point de départ , Longitude puis Lattitude :");
-
-      dep.Longitude = Convert.ToInt32(Console.ReadLine());
-      dep.Lattitude = Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Entrer start point.");
+      Console.Write("Longitude : ");
+      dep.Longitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      Console.Write("Lattitude : ");
+      dep.Lattitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
       ServiceVelib.Coordinates arr = new ServiceVelib.Coordinates();
 
-      Console.WriteLine("Entrer le point d'arrivé , Longitude puis Lattitude :");
-      arr.Longitude = Convert.ToInt32(Console.ReadLine());
-      arr.Lattitude = Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Enter Destination point.");
+      Console.Write("Longitude : ");
+      arr.Longitude = Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+      Console.Write("Lattitude : ");
+      arr.Lattitude = 2.306852;// Double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
       string[] instructions = client.GetInstructionsTrajectory(dep, arr);
 

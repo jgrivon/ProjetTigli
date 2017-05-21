@@ -23,10 +23,10 @@ namespace ServiceClient.ServiceVelib {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long LattitudeField;
+        private double LattitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long LongitudeField;
+        private double LongitudeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,7 +39,7 @@ namespace ServiceClient.ServiceVelib {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Lattitude {
+        public double Lattitude {
             get {
                 return this.LattitudeField;
             }
@@ -52,7 +52,7 @@ namespace ServiceClient.ServiceVelib {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Longitude {
+        public double Longitude {
             get {
                 return this.LongitudeField;
             }

@@ -32,9 +32,20 @@ namespace ProjetVelib
       uri = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=" + start + "&destinations=" + end + "&key=" + apiKey;
     }
 
-    public void GetTrajectoryFoot(Position start, Position end)
+    public string[] GetTrajectoryFoot(Position start, Position end)
     {
       fillCoordDirectionsFeet(start, end);
+      return GetTrajectory(start, end);
+    }
+
+    public string[] GetTrajectoryBike(Position start, Position end)
+    {
+      fillCoordDirectionsWithBike(start, end);
+      return GetTrajectory(start, end);
+    }
+
+      private string[] GetTrajectory(Position start, Position end)
+    {
       WebRequest request = WebRequest.Create(uri);
       request.Credentials = CredentialCache.DefaultCredentials;
       WebResponse response = request.GetResponse();
@@ -55,32 +66,21 @@ namespace ProjetVelib
       
       JArray legs = routes[0]["legs"].ToObject<JArray>();
       JArray steps = legs[0]["steps"].ToObject<JArray>();
-      for(int i=0; i<steps.ToArray().Length || i<10; i++)
+
+      string[] result = new string[steps.ToArray().Length];
+
+      for (int i=0; i<steps.ToArray().Length; i++)
       {
-        Console.WriteLine(steps[i]["html_instructions"].ToObject<String>());
+       // Console.WriteLine(i);
+        //Console.WriteLine(steps[i]["html_instructions"].ToObject<String>());
+        result[i] = steps[i]["html_instructions"].ToObject<String>();
       }
-      
-
-
-
-      /*
-      JArray startArr = json.GetValue("origin_addresses").ToObject<JArray>();
-      JArray endArr = json.GetValue("destination_addresses").ToObject<JArray>();
-      JArray tmp = json.GetValue("rows").ToObject<JArray>();
-      JArray tmp2 = tmp[0]["elements"].ToObject<JArray>();
-
-
-      GoogleModel google = new GoogleModel(
-          (int)tmp2[0]["distance"]["value"],
-          (int)tmp2[0]["duration"]["value"],
-          (string)startArr[0],
-          (string)endArr[0]
-          );
-
-
-      return google;
-      */
+      return result;
     }
+
+
+
+
 
 
 

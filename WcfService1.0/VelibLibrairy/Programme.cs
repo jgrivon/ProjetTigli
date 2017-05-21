@@ -43,7 +43,7 @@ namespace VelibLibrairy
         }
       }
       else { Console.Error.WriteLine("Position is null !"); }
-      Console.ReadKey();
+     
       return finalresult;
     }
 
@@ -52,7 +52,7 @@ namespace VelibLibrairy
       WebRequestVelibApi test = new WebRequestVelibApi();
       List<VelibModel> datas = test.Get();
       // for example, using random Paris coordinate
-      var sCoord = new GeoCoordinate(48.853720, 2.338358);
+      var sCoord = new GeoCoordinate(lattitude, departlong);
       int i = 0;
       GoogleModel Min = null;
       Position Arrival = null;

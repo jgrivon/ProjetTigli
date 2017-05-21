@@ -20,8 +20,10 @@ namespace VelibLibrairy
     override
     public string ToString()
     {
-      return lat + "," + lng;
+            string latstr = lat.ToString().Replace(',', '.');
+            string lngstr = lng.ToString().Replace(',', '.');
+            return latstr + "," + lngstr;
 
-    }
+        }
   }
 }
